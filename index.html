@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>משימת הצלה במערכת העיכול</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f2;--c:#fff;--t:#14262b;--m:#55696d;--a:#0b7a75;--w:#d4432f;--b:#cfdcda;--g:#e6f4f1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a1d;--c:#14262b;--t:#e4f0ee;--m:#92aaa8;--a:#3fd1c4;--w:#ff7a62;--b:#254046;--g:#0f2a2e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1a1d;--c:#14262b;--t:#e4f0ee;--m:#92aaa8;--a:#3fd1c4;--w:#ff7a62;--b:#254046;--g:#0f2a2e;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--t);font:17px/1.6 Heebo,Arial,sans-serif}
+main{max-width:680px;margin:0 auto;padding:18px}
+h1{font-size:34px;font-weight:900;line-height:1.15;margin:8px 0 4px}h2{font-size:23px;margin:0 0 6px}
+.card{background:var(--c);border:1.5px solid var(--b);border-radius:14px;padding:18px;margin:14px 0}
+.m{color:var(--m);font-size:15px}.pr{display:flex;gap:6px;margin:8px 0}.pr i{flex:1;height:8px;border-radius:4px;background:var(--b)}.pr i.d{background:var(--a)}
+button,select,input{font:inherit;color:var(--t)}
+button{background:var(--a);color:#fff;border:0;border-radius:9px;padding:9px 16px;margin:4px 0 4px 6px;cursor:pointer;font-weight:700}
+:root[data-theme="dark"] button{color:#06201d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button{color:#06201d}}
+button.o{background:var(--g);color:var(--t);border:1.5px solid var(--b);display:block;width:100%;text-align:right;font-weight:400}
+button.o.x{border-color:var(--w)}button.ok{background:var(--g);color:var(--t);border:2px solid var(--a)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--w);outline-offset:2px}
+.box{height:46px;border-radius:8px;border:1.5px solid var(--b)}
+.bar{height:20px;border-radius:5px;background:var(--a);transition:width .2s;margin:2px 0 8px}.bar.w{background:var(--w)}
+.rw{font-size:42px;font-weight:900;color:var(--a);text-align:center}
+input[type=range]{width:100%}input[type=text],select{padding:8px;border:1.5px solid var(--b);border-radius:8px;background:var(--c);width:100%;margin:4px 0}
+.rowc{display:flex;align-items:center;gap:6px;margin:4px 0}.rowc span{flex:1}.rowc button.o{width:auto;display:inline-block;margin:0}</style></head><body><main id="app"></main>
+<script>
+const S=[
+{t:'תחנה 1: הפה',s:'הקפסולה נוחתת על הלשון. עבדו בשני החלקים: בצינורית עם עמילן ויוד, כחול כהה פירושו שיש עמילן. אחר כך סווגו את הפעולות.',w:['w1','c1'],T:[['כמה המתנות של 2 דקות נדרשו עד שהצינורית עם הרוק נעשתה בהירה לגמרי?',2],['סווגו את כל הפעולות בטבלה. כמה מהן הן פירוק כימי?',3]],h:'בלי רוק הצבע לא משתנה. סווגו לפי השאלה: האם נשברת רק צורה, או שיש אנזים?'},
+{t:'תחנה 2: הושט והקיבה',s:'בקיבה יש חומצה (HCl), ערבול מכני ופפסין. הזיזו את ה-pH וראו איך הפעילות משתנה, וגם מה קורה כשאין ריר.',w:['w2'],T:[['באיזה pH הפפסין פעיל ביותר?',2],['pH ניטרלי הוא 7. בכמה יחידות נמוך ה-pH האופטימלי של הפפסין ממנו?',5]],h:'חפשו את שיא העמודה האדומה, ואז חסרו מ-7.'},
+{t:'תחנה 3: כבד ולבלב',s:'המרה מחלקת טיפות שומן גדולות לקטנות והלבלב מוסיף ליפאז. חלקו את הקובייה (צלע 4 ס״מ) וראו את שטח הפנים ביחס לנפח.',w:['w3'],T:[['מהו יחס שטח הפנים לנפח אחרי שתי חלוקות?',6],['מולקולת שומן מתפרקת לגליצרול ולחומצות שומן. כמה חומצות שומן?',3]],h:'הזיזו את המחוון ל-2 וקראו את היחס. שומן בנוי מגליצרול ושלוש שרשראות.'},
+{t:'תחנה 4: המעי הדק',s:'כאן מסתיים העיכול ומתרחשת רוב הספיגה. הפעילו את שכבות המבנה, ואז נתבו כל חומר ליעדו.',w:['w4','c4'],T:[['כמה פעמים גדל שטח הספיגה כשמפעילים קפלים ופסגונים בלבד, חלקי 10?',3],['כמה מחמשת החומרים נספגים לכילוס?',1]],h:'הכפלו שניים מהגורמים בהדמיה. שומנים הולכים ללימפה.'},
+{t:'תחנה 5: המעי הגס',s:'נותרו שאריות והרבה מים. בכמה מים נספגים תלוי האיזון של הגוף. הזיזו את המחוון.',w:['w5'],T:[['מהו קצה הטווח העליון התקין של ספיגת המים, בעשרות אחוזים?',9],['הפה, הושט, הקיבה, המעי הדק, המעי הגס: באיזה מקום בסדר המעבר נמצא המעי הגס?',5]],h:'ההדמיה מראה מתי הצואה מפסיקה להיות תקינה.'},
+{t:'תחנה 6: הדם וההומאוסטזיס',s:'הגלוקוז נספג לדם. הוויסות שומר על רמה בין 70 ל-140. התחילו ב-100, אכלו ארוחה והחזירו לאיזון.',w:['w6'],T:[['אחרי ארוחה אחת (+60), כמה לחיצות אינסולין (כל אחת מורידה 45) מחזירות לתחום התקין?',1],['מהי ספרת העשרות של הגבול התחתון של התחום התקין?',7]],h:'התחילו מ-100. 160 פחות 45 הוא בתחום.'}];
+const IT={c1:[['טחינה בשיניים',0],['עמילאז ברוק',1],['לעיסה',0],['ערבול בקיבה',0],['פפסין בקיבה',1],['ליפאז מהלבלב',1]],c4:[['גלוקוז',0],['חומצות אמינו',0],['חומצות שומן',1],['מים',0],['ויטמין C',0]]};
+const LB={c1:['מכני','כימי'],c4:['דם','לימפה']};
+let i=-1,sal=0,wt=0,g=100,bad=0,hn=0,t0=Date.now();const $=x=>document.getElementById(x);
+const bars=a=>a.map(([n,v,c])=>`<div>${n}: ${Math.round(v)}%</div><div class="bar ${c||''}" style="width:${v}%"></div>`).join('');
+const W={
+w1:()=>`<div class="box" id="tb"></div><button onclick="m1(1)">הוסיפו רוק</button><button onclick="m1(0)">המתינו 2 דקות</button><button onclick="m1(2)">אפסו</button><p class="m" id="o_w1"></p>`,
+w2:()=>`<input type="range" min="1" max="10" step=".5" value="7" oninput="m2()" id="ph" aria-label="pH"><label><input type="checkbox" id="mu" onchange="m2()"> ריר מגן</label><div id="o_w2"></div>`,
+w3:()=>`<input type="range" min="0" max="3" value="0" oninput="m3(this.value)" aria-label="חלוקות"><div id="o_w3"></div>`,
+w4:()=>`<label><input type="checkbox" onchange="m4()" class="v"> קפלים ×3</label><br><label><input type="checkbox" onchange="m4()" class="v"> פסגונים ×10</label><br><label><input type="checkbox" onchange="m4()" class="v"> microvilli ×20</label><div id="o_w4"></div>`,
+w5:()=>`<input type="range" min="0" max="100" value="50" oninput="m5(this.value)" aria-label="מים"><div id="o_w5"></div>`,
+w6:()=>`<button onclick="m6(60)">אכלו ארוחה</button><button onclick="m6(-45)">הפעילו אינסולין</button><button onclick="g=100;m6(0)">אפסו</button><div id="o_w6"></div>`};
+['c1','c4'].forEach(n=>W[n]=()=>IT[n].map(([x,c],k)=>`<div class="rowc"><span>${x}</span>${LB[n].map((l,j)=>`<button class="o" onclick="cl(this,${j==c})">${l}</button>`).join('')}</div>`).join(''));
+const I={w1:()=>m1(2),w2:()=>m2(),w3:()=>m3(0),w4:()=>m4(),w5:()=>m5(50),w6:()=>{g=100;m6(0)},c1:()=>0,c4:()=>0};
+function cl(e,ok){e.classList.add(ok?'ok':'x');e.textContent+=ok?' ✓':' ✗'}
+function m1(x){if(x==1)sal=1;if(x==0)wt++;if(x==2){sal=0;wt=0}const r=sal?Math.max(0,1-.5*wt):1,k=1-r;$('tb').style.background=`rgb(${26+206*k},${26+194*k},${94+98*k})`;$('o_w1').textContent=r>.9?'יש הרבה עמילן.':r>0?'העמילן יורד.':'אין עמילן.'}
+function m2(){const p=+$('ph').value;$('o_w2').innerHTML=`<p>pH: ${p}</p>`+bars([['פפסין',100*Math.exp(-((p-2)**2)/2),'w'],['עמילאז',100*Math.exp(-((p-7)**2)/2)]])+`<p class="m">${$('mu').checked?'הריר מגן על דופן הקיבה מהחומצה.':'בלי ריר, החומצה פוגעת בדופן הקיבה.'}</p>`}
+function m3(n){n=+n;const a=4/2**n;$('o_w3').innerHTML=`<p>טיפות: ${8**n}, צלע כל אחת: ${a} ס״מ<br>נפח כולל: 64 ס״מ³, שטח פנים כולל: ${96*2**n} ס״מ²<br><b>יחס שטח פנים לנפח: ${1.5*2**n}</b></p>`}
+function m4(){let m=1;document.querySelectorAll('.v').forEach((c,k)=>{if(c.checked)m*=[3,10,20][k]});$('o_w4').innerHTML=`<p>שטח ספיגה יחסי: ×${m}</p>`+bars([['שטח',Math.min(100,m/6)]])}
+function m5(v){v=+v;$('o_w5').innerHTML=bars([['מים שנספגו',v,v<50||v>90?'w':'']])+`<p class="m">${v<50?'ספיגה נמוכה: שלשול והתייבשות.':v>90?'ספיגה גבוהה מדי: צואה יבשה.':'ספיגה תקינה.'}</p>`}
+function m6(d){g=Math.max(40,Math.min(240,g+d));const ok=g>=70&&g<=140;$('o_w6').innerHTML=bars([['גלוקוז בדם',g/2.4,ok?'':'w']])+`<p>${g} מ״ג/ד״ל: ${ok?'בתחום התקין':'מחוץ לתחום, צריך ויסות'}</p>`}
+function hint(){hn++;$('hn').textContent=S[i].h}
+function chk(){const c=$('cd').value.trim();if(c==S[i].T.map(t=>t[1]).join('')){$('res').innerHTML='<div class="rw">🔓</div><p class="m" style="text-align:center">הדלת נפתחה. רשמו את הקוד בפנקס.</p><button onclick="go()">לתחנה הבאה</button>'}else{bad++;$('res').textContent='הקוד לא נכון. בדקו שוב כל משימה.'}}
+function go(){i++;draw()}
+function pr(){return '<div class="pr">'+S.map((_,k)=>`<i class="${k<i?'d':''}"></i>`).join('')+`<i class="${i>6?'d':''}"></i></div>`}
+function tick(){const e=$('tm');if(e){const s=Math.floor((Date.now()-t0)/1000);e.textContent=`זמן: ${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`}}
+setInterval(tick,1000);
+function draw(){let h='';
+if(i<0)h=`<h1>ארבע דקות לפני הגמר</h1><div class="card"><p>תומר, גיימר מפורסם בשכבה, אמור לעלות לגמר טורניר האיספורטס הארצי. דקות לפני כן הוא מתמוטט: חיוור, חלש, והידיים רועדות. הוא אכל ארוחה גדולה רק לפני שעה.</p><p>המעבדה הסודית של בית הספר שולחת לכם הודעה דחופה: מישהו פרץ למערכת הבקרה של מערכת העיכול של תומר וננעל את הדלתות. נאנו-קפסולה זעירה יכולה להיכנס, אבל כל תחנה נפתחת רק בקוד שמתקבל מהמשימות שלה.</p><p class="m">עבדו בזוגות. הכינו דף לפנקס הקודים: תצטרכו אותם בתחנה האחרונה.</p><button onclick="go();t0=Date.now()">הזריקו את הקפסולה</button></div>`;
+else if(i<6){const s=S[i];h=`<div class="m" id="tm"></div>${pr()}<h2>${s.t}</h2><div class="card"><p>${s.s}</p></div>${s.w.map(n=>`<div class="card">${W[n]()}</div>`).join('')}<div class="card"><b>משימות לקוד (${s.T.length} ספרות)</b><ol>${s.T.map(t=>`<li>${t[0]}</li>`).join('')}</ol><input type="text" id="cd" inputmode="numeric" maxlength="${s.T.length}" placeholder="הקלידו את הקוד" aria-label="קוד"><button onclick="chk()">פתחו את הדלת</button><button style="background:var(--g);color:var(--t);border:1.5px solid var(--b)" onclick="hint()">רמז</button><p id="res" class="m"></p><p class="m" id="hn"></p></div>`}
+else if(i==6)h=`<div class="m" id="tm"></div>${pr()}<h2>השלב האחרון: הרכבת הקוד</h2><div class="card"><p>איפה מתפרקים החומרים העיקריים?</p>${['פחמימות','חלבונים','שומנים'].map(n=>`<label>${n}<select class="f"><option value="">בחרו</option><option value="0">פה ומעי דק</option><option value="1">קיבה ומעי דק</option><option value="2">מעי דק בלבד, בעזרת מרה</option><option value="3">מעי גס</option></select></label>`).join('')}<p>אחרי שההתאמה נכונה: הקלידו את הספרה הראשונה מכל קוד תחנה, לפי הסדר (שש ספרות).</p><input type="text" id="cd" inputmode="numeric" maxlength="6" aria-label="קוד סופי"><button onclick="fin()">פתחו את המערכת</button><p id="res" class="m"></p></div>`;
+else{const s=Math.floor((Date.now()-t0)/1000);h=`<h1>המערכת חזרה לפעול</h1><div class="card"><p>תומר מתאושש, הרמה בדמו מתייצבת, והוא עולה לגמר. עיכול, ספיגה והומאוסטזיס עבדו יחד, וגם אתם.</p><p>זמן: ${Math.floor(s/60)} דקות. קודים שגויים: ${bad}. רמזים: ${hn}.</p><p class="m">שאלת סיכום: מדוע מערכת העיכול מקשרת בין הסביבה הפנימית לחיצונית?</p></div>`}
+$('app').innerHTML=h;if(i>=0&&i<6)S[i].w.forEach(n=>I[n]());window.scrollTo(0,0);tick()}
+function fin(){const f=[...document.querySelectorAll('.f')].map(x=>x.value).join(''),c=$('cd').value.trim();if(f!='012'){bad++;$('res').textContent='ההתאמה לא נכונה, בדקו איפה מתפרק כל חומר.'}else if(c!=S.map(s=>s.T[0][1]).join('')){bad++;$('res').textContent='הקוד לא נכון. בדקו את הספרות הראשונות של התחנות.'}else{i=7;draw()}}
+draw()
+</script></body></html>
